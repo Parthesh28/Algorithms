@@ -23,6 +23,10 @@ public class AoA_Experiment_10 {
         int n = text.length();
         int m = pattern.length();
         int[] pi = Prefix_Function(pattern);
+        System.out.println("Prefix array:");
+         for (int i = 0; i < m; i++) {
+                System.out.print(pi[i] + " ");
+           }
         int i = 0;
         for (int j = 0; j < n; j++) {
             while (i > 0 && pattern.charAt(i) != text.charAt(j)) {
@@ -32,7 +36,7 @@ public class AoA_Experiment_10 {
                 i++;
             }
             if (i == m) {
-                System.out.println("Pattern occurs at position: " + (j - m + 2));
+                System.out.println("\nPattern occurs after "+(j - m + 1)+ " shifts");
                 i = pi[i - 1];
             }
         }
@@ -40,11 +44,11 @@ public class AoA_Experiment_10 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the text");
+        System.out.println("Enter the text: ");
         String text = sc.nextLine();
         System.out.println("Enter the pattern");
         String pattern = sc.nextLine();
         KMPMatch(text, pattern);
-        sc.close();
     }
+
 }
