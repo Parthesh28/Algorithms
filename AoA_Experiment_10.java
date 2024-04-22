@@ -49,6 +49,6 @@ public class AoA_Experiment_10 {
         System.out.println("Enter the pattern");
         String pattern = sc.nextLine();
         KMPMatch(text, pattern);
+        sc.close();
     }
-
 }
