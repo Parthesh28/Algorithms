@@ -47,7 +47,7 @@ public class AoA_Experiment_9 {
         String text = sc.nextLine();
         System.out.println("Enter the text: ");
         String pattern = sc.nextLine();
-
         Rabin_karp(text, pattern);
+        sc.close();
     }
 }
