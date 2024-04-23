@@ -32,9 +32,7 @@ public class AoA_Experiment_4 {
     public static void kruskalMST(int vertices, int[][] graph) {
         int[] parent = new int[vertices];
         Arrays.fill(parent, -1);
-
         Edge[] edges = getEdges(vertices, graph);
-
         System.out.println("\nEdges in the Minimum Spanning Tree:");
         int edgeCount = 0;
         int totalCost = 0;
@@ -43,7 +41,7 @@ public class AoA_Experiment_4 {
             int root2 = find(parent, edge.dest);
 
             if (root1 != root2) {
-                System.out.println(" " + edge.src + "->" + edge.dest);
+                System.out.println(edge.src + " -> " + edge.dest);
                 parent[root1] = root2;
                 totalCost += edge.weight;
                 edgeCount++;
@@ -54,7 +52,6 @@ public class AoA_Experiment_4 {
         }
         System.out.println("\nMinimum cost of the spanning tree: " + totalCost);
     }
-    
 
     public static Edge[] getEdges(int vertices, int[][] graph) {
         int edgeCount = 0;
@@ -94,7 +91,6 @@ public class AoA_Experiment_4 {
         for (int count = 0; count < vertices - 1; count++) {
             int u = -1;
             int minDist = INFINITY;
-
             for (int v = 0; v < vertices; v++) {
                 if (!visited[v] && dist[v] < minDist) {
                     u = v;
@@ -128,13 +124,11 @@ public class AoA_Experiment_4 {
 
 class Edge implements Comparable<Edge> {
     int src, dest, weight;
-
     public Edge(int src, int dest, int weight) {
         this.src = src;
         this.dest = dest;
         this.weight = weight;
     }
-
     @Override
     public int compareTo(Edge other) {
         return Integer.compare(this.weight, other.weight);
