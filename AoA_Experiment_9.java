@@ -14,11 +14,10 @@ public class AoA_Experiment_9 {
         System.out.println("The text hash is: "+ texthash);
 
         for (int i = 0; i <= n - m; i++) {
-            int j;
             double textHash = hash(text.substring(i, i + m), m); 
             boolean match = true;
             if (textHash == patternHash) {
-                for (j = 0; j < m; j++) {
+                for (int j = 0; j < m; j++) {
                     if (text.charAt(i + j) != pattern.charAt(j)) {
                         spurious_hits = spurious_hits + 1;
                         match = false;
