@@ -10,12 +10,12 @@ public class AoA_Experiment_6 {
 
         System.out.print("Enter the second sequence: ");
         String str2 = scanner.nextLine();
-        findLCS(str1, str2);
+        FindLCS(str1, str2);
 
         scanner.close();
     }
 
-    public static void findLCS(String str1, String str2) {
+    public static void FindLCS(String str1, String str2) {
         int m = str1.length();
         int n = str2.length();
 
@@ -48,27 +48,22 @@ public class AoA_Experiment_6 {
             }
             System.out.println();
         }
+        System.out.print("\nThe LCS is:");
+        PrintLCS(direction, str1, m, n);
+        System.out.print("\nThe length of LCS is: "+ dp[m][n]);
+    }
 
-        int length = dp[m][n];
-        char[] lcs = new char[length];
+    public static void PrintLCS(String[][] direction, String str1, int i, int j){
+        if(i == 0 || j == 0) return; 
 
-        int i = m, j = n;
-        while (i > 0 && j > 0) {
-            if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
-                lcs[length - 1] = str1.charAt(i - 1);
-                i--;
-                j--;
-                length--;
-            } else if (dp[i - 1][j] > dp[i][j - 1]) {
-                i--;
-            } else {
-                j--;
-            }
+        if(direction[i][j] == "↖"){
+            PrintLCS(direction, str1, (i-1), (j-1));
+            System.out.print(str1.charAt(i-1));
         }
-        System.out.println("Length of Longest Common Subsequence: " + lcs.length);
-        System.out.print("The Longest Common Subsequence is: ");
-        for (int j2 = 0; j2 < lcs.length; j2++) {
-            System.out.print(lcs[j2]);
+
+        else if(direction[i][j] == "⬆"){
+            PrintLCS(direction, str1, i-1, j);
         }
+        else PrintLCS(direction, str1, i, j-1);
     }
 }
