@@ -44,7 +44,7 @@ public class AoA_Experiment_6 {
         for (int i = 0; i <= m; i++) {
             System.out.print("Character No. " + i + ":  ");
             for (int w = 0; w <= n; w++) {
-                System.out.print(dp[i][w] + "|");
+                System.out.print(dp[i][w] + direction[i][w] +  " |");
             }
             System.out.println();
         }
@@ -55,12 +55,10 @@ public class AoA_Experiment_6 {
 
     public static void PrintLCS(String[][] direction, String str1, int i, int j){
         if(i == 0 || j == 0) return; 
-
         if(direction[i][j] == "↖"){
             PrintLCS(direction, str1, (i-1), (j-1));
             System.out.print(str1.charAt(i-1));
         }
-
         else if(direction[i][j] == "⬆"){
             PrintLCS(direction, str1, i-1, j);
         }
