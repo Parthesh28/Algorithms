@@ -7,7 +7,7 @@ public class AoA_Experiment_8 {
         findSubsetsutil(arr, sum, 0, subset);
     }
 
-    static void findSubsetsutil(int[] arr, int sum, int index, int[] subset) {
+    public static void findSubsetsutil(int[] arr, int sum, int index, int[] subset) {
         if (sum == 0) {
             System.out.println("\nThe solution vector is: ");
             for (int i = 0; i < subset.length; i++) {
