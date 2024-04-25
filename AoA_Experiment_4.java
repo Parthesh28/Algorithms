@@ -22,9 +22,9 @@ public class AoA_Experiment_4 {
         kruskalMST(vertices, graph);
 
         System.out.print("Enter the source vertex for Prim's Algorithm: ");
-        int sourceVertex = scanner.nextInt();
+        int arbitary = scanner.nextInt();
         System.out.println("Prim's Algorithm:");
-        Prims(graph, sourceVertex);
+        Prims(graph, arbitary);
 
         scanner.close();
     }
@@ -74,7 +74,7 @@ public class AoA_Experiment_4 {
         return find(parent, parent[vertex]);
     }
 
-    public static void Prims(int[][] graph, int source) {
+    public static void Prims(int[][] graph, int arbitary) {
         int vertices = graph.length;
         int[] dist = new int[vertices];
         int[] pred = new int[vertices];
@@ -85,8 +85,8 @@ public class AoA_Experiment_4 {
             pred[i] = -1;
             visited[i] = false;
         }
-        dist[source] = 0;
-        pred[source] = 0;
+        dist[arbitary] = 0;
+        pred[arbitary] = 0;
 
         for (int count = 0; count < vertices - 1; count++) {
             int u = -1;
@@ -105,17 +105,17 @@ public class AoA_Experiment_4 {
                 }
             }
         }
-        printMST(pred, graph, source);
+        printMST(pred, dist, arbitary);
     }
 
-    public static void printMST(int[] parent, int[][] graph, int source) {
+    public static void printMST(int[] pred, int[] dist, int arbitary) {
         System.out.println("\nEdges in the Minimum Spanning Tree:");
         int totalCost = 0;
 
-        for (int i = 0; i < graph.length; i++) {
-            if (i != source) {
-                System.out.println(parent[i] + " -> " + i);
-                totalCost += graph[parent[i]][i];
+        for (int i = 0; i < pred.length; i++) {
+            if (i != arbitary) {
+                System.out.println(pred[i] + " -> " + i);
+                totalCost += dist[i];
             }
         }
         System.out.println("\nMinimum cost of the spanning tree: " + totalCost);
